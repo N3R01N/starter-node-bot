@@ -44,16 +44,17 @@ controller.hears('.*', ['mention'], function (bot, message) {
   bot.reply(message, 'You really do care about me. :heart:')
 })
 // test for returning html
-controller.hears('html', ['mention'], function(bot, message) {
+controller.hears('html', ['direct_message'], function(bot, message) {
+  console.log('got message', message)
   var text = 'this should be html'
   var html = '<b>'+text+'</b> \n' +
-            '<i>'+text+'</i>' +
+            '<i>'+text+'</i> \n' +
             '<p>'+text+'</p>'
   var attachments = [{
     fallback: text,
     pretext: 'We bring bots to life. :sunglasses: :thumbsup:',
     title: 'This is the title.',
-    text: text,
+    text: html,
     color: '#7CD197'
   }]
   bot.reply(message, {
