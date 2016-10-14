@@ -52,8 +52,9 @@ controller.hears('html', ['direct_message'], function(bot, message) {
             '<p>'+text+'</p>'
   var attachments = [{
     fallback: text,
-    pretext: 'We bring bots to life. :sunglasses: :thumbsup:',
+    pretext: 'pretext. :sunglasses: :thumbsup:',
     title: 'This is the title.',
+    mimetype: 'text/html',
     text: html,
     color: '#7CD197'
   }]
