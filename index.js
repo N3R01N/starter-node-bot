@@ -44,6 +44,27 @@ controller.hears('.*', ['mention'], function (bot, message) {
   bot.reply(message, 'You really do care about me. :heart:')
 })
 
+controller.hears('interactive', 'direct_message', function(bot, message) {
+    bot.reply(message, {
+        attachments:[{
+                title: 'Do you want to interact with my buttons?',
+                callback_id: '123',
+                attachment_type: 'default',
+                actions: [{
+                  name:'yes',
+                  text: 'Yes',
+                  value: 'yes',
+                  type: 'button'
+                },
+                {
+                  name:'no',
+                  text: 'No',
+                  value: 'no',
+                  type: 'button'}]
+        }]
+    })
+})
+
 controller.hears('help', ['direct_message', 'direct_mention'], function (bot, message) {
   var help = 'I will respond to the following messages: \n' +
       '`bot hi` for a simple message.\n' +
