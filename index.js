@@ -43,6 +43,25 @@ controller.hears(['hello', 'hi'], ['direct_message'], function (bot, message) {
 controller.hears('.*', ['mention'], function (bot, message) {
   bot.reply(message, 'You really do care about me. :heart:')
 })
+// test for returning html
+controller.hears('html', ['mention'], function(bot, message) {
+  var text = 'this should be html'
+  var html = '<b>'+text+'</b> \n' +
+            '<i>'+text+'</i>' +
+            '<p>'+text+'</p>'
+  var attachments = [{
+    fallback: text,
+    pretext: 'We bring bots to life. :sunglasses: :thumbsup:',
+    title: 'This is the title.',
+    text: text,
+    color: '#7CD197'
+  }]
+  bot.reply(message, {
+    attachments: attachments
+  }, function (err, resp) {
+    console.log(err, resp)
+  })
+})
 
 controller.hears('interactive', 'direct_message', function(bot, message) {
     bot.reply(message, {
